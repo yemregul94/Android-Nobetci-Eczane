@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@id/citySelectionFragment">
+
+    <fragment
+        android:id="@+id/pharmacyListFragment"
+        android:name="com.moonlight.nobetcieczaneler.ui.pharmacylist.PharmacyListFragment"
+        android:label="fragment_pharmacy_list"
+        tools:layout="@layout/fragment_pharmacy_list">
+        <action
+            android:id="@+id/action_goToPharmacyDetails"
+            app:destination="@id/pharmacyDetailsFragment" />
+        <action
+            android:id="@+id/action_goToPharmacyMap"
+            app:destination="@id/pharmacyMapFragment" />
+        <argument
+            android:name="pharmacyResponse"
+            app:argType="com.moonlight.nobetcieczaneler.data.model.PharmacyResponse" />
+        <argument
+            android:name="isNearby"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/pharmacyDetailsFragment"
+        android:name="com.moonlight.nobetcieczaneler.ui.pharmacydetails.PharmacyDetailsFragment"
+        android:label="fragment_pharmacy_details"
+        tools:layout="@layout/fragment_pharmacy_details" >
+        <argument
+            android:name="pharmacy"
+            app:argType="com.moonlight.nobetcieczaneler.data.model.Pharmacy" />
+    </fragment>
+    <fragment
+        android:id="@+id/pharmacyMapFragment"
+        android:name="com.moonlight.nobetcieczaneler.ui.pharmacymap.PharmacyMapFragment"
+        android:label="fragment_pharmacy_map"
+        tools:layout="@layout/fragment_pharmacy_map" >
+        <argument
+            android:name="pharmacyResponse"
+            app:argType="com.moonlight.nobetcieczaneler.data.model.PharmacyResponse" />
+    </fragment>
+    <fragment
+        android:id="@+id/citySelectionFragment"
+        android:name="com.moonlight.nobetcieczaneler.ui.cityselection.CitySelectionFragment"
+        android:label="fragment_city_selection"
+        tools:layout="@layout/fragment_city_selection" >
+        <action
+            android:id="@+id/action_goToPharmacyList"
+            app:destination="@id/pharmacyListFragment" />
+    </fragment>
+</navigation>

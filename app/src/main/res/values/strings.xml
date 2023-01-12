@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Pharmacy on Duty</string>
+    <string name="submit">Submit</string>
+    <string name="nearby">Nearby Pharmacies</string>
+    <string name="pharmacy_name">Pharmacy Name</string>
+    <string name="pharmacy_address">Placeholder Blvd, Example Street, Num:01 County / City</string>
+    <string name="show_on_google_maps">Show on Maps</string>
+    <string name="phone_number">+90123456789</string>
+    <string name="show_on_map">Show on map</string>
+    <string name="county_name">County Name</string>
+    <string name="distance">Distance: %1$.2f km</string>
+    <string name="warning_county_not_selected">Select City/County</string>
+    <string name="warning_location_error">Location Error</string>
+    <string name="warning_location_not_found">Location Not Found</string>
+    <string name="warning_location_disabled">You need to turn on Location</string>
+    <string name="warning_location_permission">Location Permission Required</string>
+    <string name="warning_call_permission">Phone Permission Required</string>
+    <string name="allow">Allow</string>
+    <string name="your_location">Your Location</string>
+    <string name="city_county">County / City</string>
+
+</resources>

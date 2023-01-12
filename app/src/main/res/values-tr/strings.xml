@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nobetci Eczaneler</string>
+    <string name="submit">Gönder</string>
+    <string name="nearby">Yakındaki Eczaneler</string>
+    <string name="pharmacy_name">Eczane Adı</string>
+    <string name="pharmacy_address">Placeholder Mahallesi, Deneme Caddesi, Örnek Sokak, No:01 İlçeAdı / İlAdı</string>
+    <string name="show_on_google_maps">Haritalar\'da Görüntüle</string>
+    <string name="phone_number">+90123456789</string>
+    <string name="show_on_map">Harita Üzerinde Görüntüle</string>
+    <string name="county_name">İlçe Adı</string>
+    <string name="distance">Mesafe: %1$.2f km</string>
+    <string name="warning_county_not_selected">İl/İlçe Seçimi Yapınız</string>
+    <string name="warning_location_error">Konum Hatası</string>
+    <string name="warning_location_not_found">Konum Bulunamadı</string>
+    <string name="warning_location_disabled">Konumu Açmanız Gerekiyor</string>
+    <string name="warning_location_permission">Konum İznini Sağlamadınız</string>
+    <string name="warning_call_permission">Arama İzni Gerekiyor</string>
+    <string name="allow">İzin Ver</string>
+    <string name="your_location">Konumunuz</string>
+    <string name="city_county">İlce / İl</string>
+</resources>
