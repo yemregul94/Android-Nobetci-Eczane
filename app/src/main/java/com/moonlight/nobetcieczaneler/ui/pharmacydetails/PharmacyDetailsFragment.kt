@@ -10,6 +10,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -53,6 +54,9 @@ class PharmacyDetailsFragment : Fragment(), OnMapReadyCallback {
         }
         binding.layoutMap.setOnClickListener {
             openGoogleMaps()
+        }
+        binding.btnBack.setOnClickListener {
+            requireActivity().onBackPressed()
         }
 
         return binding.root
@@ -109,5 +113,11 @@ class PharmacyDetailsFragment : Fragment(), OnMapReadyCallback {
             .title(title))?.showInfoWindow()
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
 
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

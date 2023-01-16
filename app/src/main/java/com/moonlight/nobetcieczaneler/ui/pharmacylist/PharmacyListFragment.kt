@@ -73,4 +73,9 @@ class PharmacyListFragment : Fragment() {
         Navigation.findNavController(requireView()).navigate(nav)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
