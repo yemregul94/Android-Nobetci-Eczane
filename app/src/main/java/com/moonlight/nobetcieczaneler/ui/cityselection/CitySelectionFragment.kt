@@ -10,7 +10,6 @@ import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,13 +23,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.gms.tasks.OnTokenCanceledListener
+import com.google.android.material.snackbar.Snackbar
 import com.moonlight.nobetcieczaneler.R
 import com.moonlight.nobetcieczaneler.databinding.FragmentCitySelectionBinding
 import com.moonlight.nobetcieczaneler.ui.MainViewModel
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -149,7 +152,12 @@ class CitySelectionFragment : Fragment(){
                         viewModel.getNearbyList(sharedViewModel.userLocation.value!!.latitude, sharedViewModel.userLocation.value!!.longitude)
 
                         val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
-                        Navigation.findNavController(requireView()).navigate(nav)
+                        try {
+                            Navigation.findNavController(requireView()).navigate(nav)
+                        }
+                        catch (_: Exception){
+
+                        }
                     }
                     else {
                         Toast.makeText(requireContext(), getString(R.string.warning_location_error), Toast.LENGTH_SHORT).show()
@@ -162,18 +170,27 @@ class CitySelectionFragment : Fragment(){
     private fun getLocation() {
         if(checkLocationPermission()){
             if(checkLocationEnabled()){
-                fusedLocationProviderClient.lastLocation.addOnCompleteListener {
+                fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, object : CancellationToken(){
+                    override fun onCanceledRequested(p0: OnTokenCanceledListener): CancellationToken {
+                        return CancellationTokenSource().token
+                    }
+                    override fun isCancellationRequested(): Boolean {
+                        return false
+                    }
+                }).addOnCompleteListener {
                     val locationResult: Location?=it.result
+
                     if(locationResult == null){
                         Toast.makeText(requireContext(), getString(R.string.warning_location_not_found), Toast.LENGTH_SHORT).show()
                     }else {
                         sharedViewModel.saveLocation(LatLng(locationResult.latitude, locationResult.longitude))
                     }
                 }
+
             }
             else
             {
-                Snackbar.make(requireView(), getString(R.string.warning_location_disabled), Snackbar.LENGTH_SHORT).setAction(R.string.allow) {
+                Snackbar.make(requireView(), getString(R.string.warning_location_disabled), Snackbar.LENGTH_SHORT).setAction(R.string.enable) {
                     val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     requireActivity().startActivity(intent)
                 }.show()

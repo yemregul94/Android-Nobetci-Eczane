@@ -19,4 +19,5 @@
     <string name="allow">İzin Ver</string>
     <string name="your_location">Konumunuz</string>
     <string name="city_county">İlce / İl</string>
+    <string name="enable">Aç</string>
 </resources>

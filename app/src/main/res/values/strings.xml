@@ -12,10 +12,11 @@
     <string name="warning_county_not_selected">Select City/County</string>
     <string name="warning_location_error">Location Error</string>
     <string name="warning_location_not_found">Location Not Found</string>
-    <string name="warning_location_disabled">You need to turn on Location</string>
+    <string name="warning_location_disabled">You need to enable Location</string>
     <string name="warning_location_permission">Location Permission Required</string>
     <string name="warning_call_permission">Phone Permission Required</string>
     <string name="allow">Allow</string>
+    <string name="enable">Enable</string>
     <string name="your_location">Your Location</string>
     <string name="city_county">County / City</string>
 
