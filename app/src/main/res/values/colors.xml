@@ -18,4 +18,7 @@
     <color name="text_county">#DC0247</color>
     <color name="text_distance">#3C3C3C</color>
 
+    <color name="item_background">#FFFFFF</color>
+
+
 </resources>

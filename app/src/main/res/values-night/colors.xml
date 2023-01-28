@@ -5,10 +5,12 @@
     <color name="red_secondary">#4E4444</color>
     <color name="red_button">#F3ABAB</color>
 
-    <color name="text_primary">#000000</color>
+    <color name="text_primary">#CFCFCF</color>
     <color name="text_secondary">#FFFFFF</color>
     <color name="text_title">#FD7EE8</color>
     <color name="text_county">#F3ABAB</color>
     <color name="text_distance">#BFBFBF</color>
+
+    <color name="item_background">#000000</color>
 
 </resources>
