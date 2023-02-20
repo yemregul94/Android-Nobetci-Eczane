@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -35,13 +34,12 @@ class PharmacyListFragment : Fragment() {
     ): View {
         _binding = FragmentPharmacyListBinding.inflate(inflater, container, false)
 
+        loadList()
         checkListType()
 
         binding.layoutMap.setOnClickListener {
             loadMap()
         }
-
-        loadList()
 
         return binding.root
     }
