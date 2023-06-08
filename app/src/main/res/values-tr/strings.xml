@@ -11,6 +11,7 @@
     <string name="county_name">İlçe Adı</string>
     <string name="distance">Mesafe: %1$.2f km</string>
     <string name="warning_county_not_selected">İl/İlçe Seçimi Yapınız</string>
+    <string name="warning_connection_not_found">İnternet Bağlantısı Bulunamadı</string>
     <string name="warning_location_error">Konum Hatası</string>
     <string name="warning_location_not_found">Konum Bulunamadı</string>
     <string name="warning_location_disabled">Konumu Açmanız Gerekiyor</string>

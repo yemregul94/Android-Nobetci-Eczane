@@ -9,6 +9,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
@@ -48,18 +49,36 @@ class CitySelectionFragment : Fragment(){
     private val sharedViewModel: MainViewModel by activityViewModels()
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var lastLocation = LatLng(0.0, 0.0)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCitySelectionBinding.inflate(inflater, container, false)
 
-        getCities()
+
+        sharedViewModel.isConnected.observe(viewLifecycleOwner) {
+            if (it) {
+                getCities()
+            }
+        }
 
         binding.btnSubmit.setOnClickListener {
-            submitButton()
+            if(sharedViewModel.checkConnection()){
+                submitButton()
+            }
+            else {
+                Toast.makeText(requireContext(), getString(R.string.warning_connection_not_found), Toast.LENGTH_SHORT).show()
+            }
         }
         binding.btnNearby.setOnClickListener {
-            getNearbyList()
+            disableButton(it)
+
+            if(sharedViewModel.checkConnection()){
+                getNearbyList()
+            }
+            else {
+                Toast.makeText(requireContext(), getString(R.string.warning_connection_not_found), Toast.LENGTH_SHORT).show()
+            }
         }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
@@ -67,6 +86,10 @@ class CitySelectionFragment : Fragment(){
         return binding.root
     }
 
+    private fun disableButton(view: View) {
+        view.setEnabled(false)
+            Handler().postDelayed({ view.setEnabled(true) }, 5000)
+    }
 
 
     private fun getCities(){
@@ -146,25 +169,35 @@ class CitySelectionFragment : Fragment(){
             getLocation()
 
             sharedViewModel.userLocation.observe(viewLifecycleOwner) {
-                viewLifecycleOwner.lifecycleScope.launch {
+                if(lastLocation != it){
+                    viewLifecycleOwner.lifecycleScope.launch {
 
-                    if (it != null) {
-                        viewModel.getNearbyList(sharedViewModel.userLocation.value!!.latitude, sharedViewModel.userLocation.value!!.longitude)
+                        if (it != null) {
+                            viewModel.getNearbyList(sharedViewModel.userLocation.value!!.latitude, sharedViewModel.userLocation.value!!.longitude)
 
-                        val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
-                        try {
-                            Navigation.findNavController(requireView()).navigate(nav)
+                            try {
+                                val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
+                                Navigation.findNavController(requireView()).navigate(nav)
+                            }
+                            catch (_: Exception){
+
+                            }
                         }
-                        catch (_: Exception){
-
+                        else {
+                            Toast.makeText(requireContext(), getString(R.string.warning_location_error), Toast.LENGTH_SHORT).show()
                         }
                     }
-                    else {
-                        Toast.makeText(requireContext(), getString(R.string.warning_location_error), Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    try {
+                        val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
+                        Navigation.findNavController(requireView()).navigate(nav)
+                    }
+                    catch (_: Exception){
+
                     }
                 }
             }
-
     }
 
     private fun getLocation() {
@@ -184,6 +217,7 @@ class CitySelectionFragment : Fragment(){
                         Toast.makeText(requireContext(), getString(R.string.warning_location_not_found), Toast.LENGTH_SHORT).show()
                     }else {
                         sharedViewModel.saveLocation(LatLng(locationResult.latitude, locationResult.longitude))
+                        lastLocation = LatLng(locationResult.latitude, locationResult.longitude)
                     }
                 }
 

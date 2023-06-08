@@ -4,6 +4,7 @@
     <color name="red_primary">#5A2D2D</color>
     <color name="red_secondary">#4E4444</color>
     <color name="red_button">#F3ABAB</color>
+    <color name="red_button_disabled">#656363</color>
 
     <color name="text_primary">#CFCFCF</color>
     <color name="text_secondary">#FFFFFF</color>

@@ -10,6 +10,7 @@
     <string name="county_name">County Name</string>
     <string name="distance">Distance: %1$.2f km</string>
     <string name="warning_county_not_selected">Select City/County</string>
+    <string name="warning_connection_not_found">Internet Connection Not Found</string>
     <string name="warning_location_error">Location Error</string>
     <string name="warning_location_not_found">Location Not Found</string>
     <string name="warning_location_disabled">You need to enable Location</string>

@@ -11,6 +11,7 @@
     <color name="red_primary">#C50000</color>
     <color name="red_secondary">#FFD9D9</color>
     <color name="red_button">#FFB3B3</color>
+    <color name="red_button_disabled">#656363</color>
 
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#000000</color>
