@@ -18,6 +18,7 @@ class CitySelectionViewModel @Inject constructor(var prepo: PharmacyRepository) 
     var selectedCounty: String? = null
 
     lateinit var pharmacyResponse: PharmacyResponse
+    lateinit var nearbyPharmacyResponse: PharmacyResponse
 
 
     suspend fun getCities(){
@@ -66,6 +67,6 @@ class CitySelectionViewModel @Inject constructor(var prepo: PharmacyRepository) 
 
     suspend fun getNearbyList(latitude: Double, longitude: Double){
         val response = prepo.getNearbyList(latitude, longitude)
-        pharmacyResponse = response
+        nearbyPharmacyResponse = response
     }
 }

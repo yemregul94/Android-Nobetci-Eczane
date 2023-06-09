@@ -49,7 +49,10 @@ class CitySelectionFragment : Fragment(){
     private val sharedViewModel: MainViewModel by activityViewModels()
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
     private var lastLocation = LatLng(0.0, 0.0)
+    private var lastCityPos = 0
+    private var lastCounty = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -99,6 +102,7 @@ class CitySelectionFragment : Fragment(){
             viewModel.getCities()
 
             binding.spinnerCity.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, viewModel.citiesNameList)
+            binding.spinnerCity.setSelection(lastCityPos)
 
             binding.spinnerCity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -113,6 +117,7 @@ class CitySelectionFragment : Fragment(){
                         }
 
                         val city = viewModel.citiesMap[parent?.getItemAtPosition(position)].toString()
+                        lastCityPos = position
                         viewModel.selectedCity = city
                         getCounties(city)
                     }
@@ -154,7 +159,10 @@ class CitySelectionFragment : Fragment(){
     private fun submitButton(){
         viewLifecycleOwner.lifecycleScope.launch {
             if(viewModel.selectedCounty != null){
-                viewModel.submitButton(viewModel.selectedCity, viewModel.selectedCounty!!)
+                if(viewModel.selectedCounty != lastCounty){
+                    viewModel.submitButton(viewModel.selectedCity, viewModel.selectedCounty!!)
+                    lastCounty = viewModel.selectedCounty!!
+                }
 
                 val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, false)
                 Navigation.findNavController(requireView()).navigate(nav)
@@ -176,7 +184,7 @@ class CitySelectionFragment : Fragment(){
                             viewModel.getNearbyList(sharedViewModel.userLocation.value!!.latitude, sharedViewModel.userLocation.value!!.longitude)
 
                             try {
-                                val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
+                                val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.nearbyPharmacyResponse, true)
                                 Navigation.findNavController(requireView()).navigate(nav)
                             }
                             catch (_: Exception){
@@ -190,7 +198,7 @@ class CitySelectionFragment : Fragment(){
                 }
                 else {
                     try {
-                        val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.pharmacyResponse, true)
+                        val nav = CitySelectionFragmentDirections.actionGoToPharmacyList(viewModel.nearbyPharmacyResponse, true)
                         Navigation.findNavController(requireView()).navigate(nav)
                     }
                     catch (_: Exception){
