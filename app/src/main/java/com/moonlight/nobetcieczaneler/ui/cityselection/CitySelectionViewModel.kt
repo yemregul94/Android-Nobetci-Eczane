@@ -17,8 +17,8 @@ class CitySelectionViewModel @Inject constructor(var prepo: PharmacyRepository) 
     var countiesNameList = ArrayList<String>()
     var selectedCounty: String? = null
 
-    lateinit var pharmacyResponse: PharmacyResponse
-    lateinit var nearbyPharmacyResponse: PharmacyResponse
+    var pharmacyResponse: PharmacyResponse? = null
+    var nearbyPharmacyResponse: PharmacyResponse? = null
 
 
     suspend fun getCities(){
