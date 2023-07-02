@@ -53,6 +53,7 @@ class CitySelectionFragment : Fragment(){
     private var lastLocation = LatLng(0.0, 0.0)
     private var lastCityPos = 0
     private var lastCity = ""
+    private var lastCountyPos = 0
     private var lastCounty = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -74,6 +75,7 @@ class CitySelectionFragment : Fragment(){
                 Toast.makeText(requireContext(), getString(R.string.warning_connection_not_found), Toast.LENGTH_SHORT).show()
             }
         }
+
         binding.btnNearby.setOnClickListener {
             disableButton(it)
 
@@ -84,10 +86,18 @@ class CitySelectionFragment : Fragment(){
                 Toast.makeText(requireContext(), getString(R.string.warning_connection_not_found), Toast.LENGTH_SHORT).show()
             }
         }
+        binding.layoutAbout.setOnClickListener {
+            goToAbout()
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         return binding.root
+    }
+
+    private fun goToAbout() {
+        val nav = CitySelectionFragmentDirections.actionGoToAbout()
+        Navigation.findNavController(requireView()).navigate(nav)
     }
 
     private fun disableButton(view: View) {
@@ -139,6 +149,10 @@ class CitySelectionFragment : Fragment(){
 
             binding.spinnerCounty.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, viewModel.countiesNameList)
 
+            if(lastCity == viewModel.selectedCity){
+                binding.spinnerCounty.setSelection(lastCountyPos)
+            }
+
             binding.spinnerCounty.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
@@ -150,6 +164,7 @@ class CitySelectionFragment : Fragment(){
                     }
 
                     val county = viewModel.countiesMap[parent?.getItemAtPosition(position)].toString()
+                    lastCountyPos = position
                     viewModel.selectedCounty = county
                 }
             }

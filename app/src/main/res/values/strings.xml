@@ -22,5 +22,11 @@
     <string name="city_county">County / City</string>
     <string name="no_pharmacy_nearby">No pharmacy found in 5 km radius, please select a city and a county</string>
     <string name="no_pharmacy_in_selected_area">No pharmacy found in selected area</string>
+    <string name="about">About the Application</string>
+    <string name="about_dev">This application has been developed by <b>Yunus Emre GUL</b> and distributed for free to use. You can use the links below to give feedbacks.</string>
+    <string name="about_api">API support of the application is provided by NosyAPI</string>
+    <string name="share_with">Share with:</string>
+    <string name="share">Share</string>
+    <string name="about_share">If you want to share this application with people you know, you can scan the QR code with their devices or you can use the share button to share the link via other applications.</string>
 
 </resources>

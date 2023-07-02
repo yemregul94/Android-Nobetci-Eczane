@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Nobetci Eczaneler</string>
+    <string name="app_name">Nöbetçi Eczaneler</string>
     <string name="submit">Gönder</string>
     <string name="nearby">Yakındaki Eczaneler</string>
     <string name="pharmacy_name">Eczane Adı</string>
@@ -19,8 +19,16 @@
     <string name="warning_call_permission">Arama İzni Gerekiyor</string>
     <string name="allow">İzin Ver</string>
     <string name="your_location">Konumunuz</string>
-    <string name="city_county">İlce / İl</string>
+    <string name="city_county">İlçe / İl</string>
     <string name="enable">Aç</string>
     <string name="no_pharmacy_nearby">5 km içinde eczane bulunamadı, lütfen il ve ilçe seçimi yapınız</string>
     <string name="no_pharmacy_in_selected_area">Seçtiğiniz bölgede eczane bulunamadı</string>
+    <string name="about">Uygulama Hakkında</string>
+    <string name="about_dev">Bu uygulama <b>Yunus Emre GÜL</b> tarafından geliştirilip, ücretsiz olarak kullanıma sunulmuştur. Geri dönüş yapmak için aşağıdaki adresleri kullanabilirsiniz.</string>
+    <string name="about_api">Uygulamanın API desteği NosyAPI tarafından sağlanmaktadır.</string>
+    <string name="about_share">Uygulamayı çevrenizle paylaşmak isterseniz; onların cihazlarından QR kodu okutabilirsiniz veya paylaş butonunu kullanarak da uygulamanın linkini, farklı uygulamalarda paylaşabilirsiniz.</string>
+    <string name="share_with">Paylaşmak için uygulama seçin</string>
+    <string name="share">Paylaş</string>
+
+
 </resources>
