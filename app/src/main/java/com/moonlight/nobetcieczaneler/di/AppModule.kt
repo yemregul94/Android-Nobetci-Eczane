@@ -2,7 +2,6 @@ package com.moonlight.nobetcieczaneler.di
 
 import com.moonlight.nobetcieczaneler.data.datasource.PharmacyDataSource
 import com.moonlight.nobetcieczaneler.data.repo.PharmacyRepository
-import com.moonlight.nobetcieczaneler.data.retrofit.ApiUtils
 import com.moonlight.nobetcieczaneler.data.retrofit.PharmacyDao
 import dagger.Module
 import dagger.Provides
@@ -24,12 +23,6 @@ class AppModule {
     @Singleton
     fun providePharmacyDataSource(pdao: PharmacyDao): PharmacyDataSource {
         return PharmacyDataSource(pdao)
-    }
-
-    @Provides
-    @Singleton
-    fun providePharmacyDao(): PharmacyDao {
-        return ApiUtils.getPharmacyDao()
     }
 
 }
