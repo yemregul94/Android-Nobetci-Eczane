@@ -2,6 +2,8 @@
 
 Bu uygulama ile kullanıcılar Türkiye'nin 81 ilindeki ve KKTC'deki nöbetçi eczanelere kolaylıkla ulaşabilmektedir. Kullanıcılar kendi konumlarına yakın olan eczaneleri listeyeleyebilir veya harita üzerinde gösterebilir. Konumunu paylaşmak istemeyen veya dilediği konuma bakmak isteyen kullanıcılar da listeden il ve ilçe seçimi yaparak istedikleri bölgedeki nöbetçi eczanelere ulaşabilir.
 
+Uygulama, API kaynağı olarak <a href="https://www.nosyapi.com/">NosyApi</a> kullanmaktadır. Kendilerine, sağladıkları destekler için teşekkür ederim.
+
 ## Ana Ekran
 
 Uygulamadaki tüm string değerler strings dosyasından alındığı için, uygulamanın çoklu dil desteği vardır. Uygulamanın renkleri de yine dosyadan okunduğu için karanlık mod desteği de vardır. Kullanıcılar ana ekranda nöbetçi eczane aramak istedikleri il ve ilçeyi seçip arama yapabilirler. Bunun yanı sıra konum izni vererek yakınlarındaki nöbetçi eczaneleri de görebilirler.
