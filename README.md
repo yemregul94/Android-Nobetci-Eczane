@@ -1,5 +1,8 @@
 # Nöbetçi Eczane Android Uygulaması
 
+<a href="https://play.google.com/store/apps/details?id=com.moonlight.nobetcieczaneler" target="_blank">
+<img src="http://pluspng.com/img-png/get-it-on-google-play-badge-png-open-2000.png" height="48"></a>
+
 Bu uygulama ile kullanıcılar Türkiye'nin 81 ilindeki ve KKTC'deki nöbetçi eczanelere kolaylıkla ulaşabilmektedir. Kullanıcılar kendi konumlarına yakın olan eczaneleri listeyeleyebilir veya harita üzerinde gösterebilir. Konumunu paylaşmak istemeyen veya dilediği konuma bakmak isteyen kullanıcılar da listeden il ve ilçe seçimi yaparak istedikleri bölgedeki nöbetçi eczanelere ulaşabilir.
 
 Uygulama, API kaynağı olarak <a href="https://www.nosyapi.com/">NosyApi</a> kullanmaktadır. Kendilerine, sağladıkları destekler için teşekkür ederim.
